@@ -32,7 +32,12 @@
           <input type="text" name="venue-phone" value='@Model["venue"].GetPhone()' class="form-control" required>
           <label for="venue-email">Venue Email:</label>
           <input type="text" name="venue-email" value='@Model["venue"].GetEmail()' class="form-control" required>
-          <button class="btn btn-danger" type="submit" name="edit-venue">Submit</button>
+          <br>
+          <button class="btn btn-secondary" type="submit" name="edit-venue">Submit</button>
+        </form>
+        <form class="form-group" action='/venues/@Model["venue"].GetId()/delete' method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger" type="button" name="delete">Delete this Venue?</button>
         </form>
       </div>
     </div>
