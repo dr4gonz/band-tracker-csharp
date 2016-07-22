@@ -3,12 +3,12 @@ using System.Data.SqlClient;
 
 namespace BandTracker
 {
-    public class DB
+  public class DB
+  {
+    public static SqlConnection Connection()
     {
-        public static SqlConnection Connection()
-        {
-            SqlConnection conn = new SqlConnection(DBConfiguration.ConnectionString);
-            return conn;
-        }
+      SqlConnection conn = new SqlConnection(DBConfiguration.ConnectionString);
+      return conn;
     }
+  }
 }

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace BandTracker
 {
-    public class HomeModule : NancyModule
+  public class HomeModule : NancyModule
+  {
+    public HomeModule()
     {
-        public HomeModule()
-        {
-            Get["/"] = _ => View["index.cshtml"];
-        }
+      Get["/"] = _ => View["index.cshtml"];
     }
+  }
 }
