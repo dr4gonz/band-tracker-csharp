@@ -7,7 +7,21 @@
   </head>
   <body>
     <div class="container">
-      <div class="col-md-10">
+      <div class="col-md-12">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Band Tracker</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="/bands">View All Bands</a></li>
+              <li><a href="/bands/add">Add a Band to Track!</a></li>
+              <li><a href="/venues">View All Venues</a></li>
+              <li><a href="/venues/add">Add a Venue to Track</a></li>
+            </ul>
+          </div>
+        </nav>
         <form class="form-group" action='/venues/@Model["venue"].GetId()' method="post">
           <h1>Edit - @Model["venue"].GetName()</h1>
           <hr>
@@ -20,9 +34,7 @@
           <input type="text" name="venue-email" value='@Model["venue"].GetEmail()' class="form-control" required>
           <button class="btn btn-danger" type="submit" name="edit-venue">Submit</button>
         </form>
-    <a href="/bands">View All Bands</a> |
-    <a href="/bands/add">Add a Band to Track!</a> |
-    <a href="/venues">View All Venues</a> |
-    <a href="/venues/add">Add a Venue to Track!</a>
+      </div>
+    </div>
   </body>
 </html>

@@ -6,20 +6,39 @@
     <title>Band Tracker</title>
   </head>
   <body>
-    <h1>Add a new Band to Venue Tracking: </h1>
-    <hr>
-    <form class="form-group" action="/venues/add" method="post">
-      <label for="venue-name">Venue Name:</label>
-      <input type="text" class="form-control" name="venue-name" required>
-      <label for="venue-phone">Venue Phone Numeber:</label>
-      <input type="text" class="form-control" name="venue-phone" required>
-      <label for="venue-email">Venue Contact Email:</label>
-      <input type="email" class="form-control" name="venue-email" required>
-      <button type="submit" name="button" class="btn btn-default">Add Venue</button>
-    </form>
-    <a href="/bands">View All Bands</a> |
-    <a href="/bands/add">Add a Band to Track!</a> |
-    <a href="/venues">View All Venues</a> |
-    <a href="/venues/add">Add a Venue to Track!</a>
+    <div class="container">
+      <div class="col-md-12">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Band Tracker</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/bands">View All Bands</a></li>
+              <li><a href="/bands/add">Add a Band to Track!</a></li>
+              <li><a href="/venues">View All Venues</a></li>
+              <li><a href="/venues/add">Add a Venue to Track</a></li>
+            </ul>
+          </div>
+        </nav>
+        <h1>Add a new Band to Venue Tracking: </h1>
+        <hr>
+        <form class="form-group" action="/venues/add" method="post">
+          <label for="venue-name">Venue Name:</label>
+          <input type="text" class="form-control" name="venue-name" required>
+          <label for="venue-phone">Venue Phone Numeber:</label>
+          <input type="text" class="form-control" name="venue-phone" required>
+          <label for="venue-email">Venue Contact Email:</label>
+          <input type="email" class="form-control" name="venue-email" required>
+          <br>
+          <button type="submit" name="button" class="btn btn-default">Add Venue</button>
+        </form>
+        <a href="/bands">View All Bands</a> |
+        <a href="/bands/add">Add a Band to Track!</a> |
+        <a href="/venues">View All Venues</a> |
+        <a href="/venues/add">Add a Venue to Track!</a>
+      </div>
+    </div>
   </body>
 </html>

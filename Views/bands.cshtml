@@ -6,20 +6,34 @@
     <title>Band Tracker</title>
   </head>
   <body>
-    <h1>Bands</h1>
-    <ul class="list-group">
-      @foreach (var band in Model)
-      {
-        <li class="list-group-item"><a href="/bands/@band.GetId()">@band.GetName()</a></li>
+    <div class="container">
+      <div class="col-md-12">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Band Tracker</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/bands">View All Bands</a></li>
+              <li><a href="/bands/add">Add a Band to Track!</a></li>
+              <li><a href="/venues">View All Venues</a></li>
+              <li><a href="/venues/add">Add a Venue to Track</a></li>
+            </ul>
+          </div>
+        </nav>
+        <h1>Bands</h1>
         <ul class="list-group">
-          <li class="list-group-item"><a href="@band.GetWebsite()">@band.GetWebsite()</a></li>
-          <li class="list-group-item">@band.GetEmail()</li>
+          @foreach (var band in Model)
+          {
+            <li class="list-group-item"><a href="/bands/@band.GetId()">@band.GetName()</a></li>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="@band.GetWebsite()">@band.GetWebsite()</a></li>
+              <li class="list-group-item">@band.GetEmail()</li>
+            </ul>
+          }
         </ul>
-      }
-    </ul>
-    <a href="/bands">View All Bands</a> |
-    <a href="/bands/add">Add a Band to Track!</a> |
-    <a href="/venues">View All Venues</a> |
-    <a href="/venues/add">Add a Venue to Track!</a>
+      </div>
+    </div>
   </body>
 </html>
