@@ -6,18 +6,48 @@
     <title>Band Tracker</title>
   </head>
   <body>
-    <h1>@Model.GetName()</h1>
-    <hr>
-    <h3>Phone Number: @Model.GetPhone()</h3>
-    <h3>Email: @Model.GetEmail()</h3>
-    <br>
-    <h1>Bands That Have Played Here: </h1>
-    <ul class="list-group">
-      @foreach (var band in Model.GetBands())
-      {
-        <li class="list-group-item"><a href="/bands/@band.GetId()">@band.GetName()</a></li>
-      }
-    </ul>
+    <div class="container">
+      <div class="col-md-10">
+        <h1>@Model["venue"].GetName()</h1>
+        <hr>
+        <h3>Phone Number: @Model["venue"].GetPhone()</a></h3>
+        <h3>Email: @Model["venue"].GetEmail()</h3>
+        <br>
+        @if(Model["venue"].GetBands().Count == 0)
+        {
+          <h2>This Venue has no associated Bands! Select One to Add: </h2>
+          <form class="form-group" action='/venues/@Model["venue"].GetId()/add-band' method="post">
+            <input type="hidden" name="venue-id" value='@Model["venue"].GetId()'>
+            <select name="band-id">
+              @foreach(var band in Model["bands"])
+              {
+                <option value=@band.GetId()>@band.GetName()</option>
+              }
+            </select>
+            <button type="submit" name="add-band">Add Band to Venue</button>
+          </form>
+        }
+        else
+        {
+          <h1>Bands that have played here: </h1>
+          <ul class="list-group">
+            @foreach (var band in Model["venues-bands"])
+            {
+              <li class="list-group-item"><a href="/bands/@band.GetId()">@band.GetName()</a></li>
+            }
+          </ul>
+          <br>
+          <form class="form-group" action='/venues/@Model["venue"].GetId()/add-band' method="post">
+            <input type="hidden" name="venue-id" value='@Model["venue"].GetId()'>
+            <select name="band-id">
+              @foreach(var band in Model["bands"])
+              {
+                <option value=@band.GetId()>@band.GetName()</option>
+              }
+            </select>
+            <button type="submit" name="add-band">Add Band to Venue</button>
+          </form>
+        }
     <a href="/bands">View All Bands</a> |
     <a href="/bands/add">Add a Band to Track!</a> |
     <a href="/venues">View All Venues</a> |
