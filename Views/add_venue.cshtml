@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Band Tracker</title>
+  </head>
+  <body>
+    <h1>Add a new Band to Venue Tracking: </h1>
+    <hr>
+    <form class="form-group" action="/venues/add" method="post">
+      <label for="venue-name">Venue Name:</label>
+      <input type="text" class="form-control" name="venue-name" required>
+      <label for="venue-phone">Venue Phone Numeber:</label>
+      <input type="text" class="form-control" name="venue-phone" required>
+      <label for="venue-email">Venue Contact Email:</label>
+      <input type="email" class="form-control" name="venue-email" required>
+      <button type="submit" name="button">Add Venue</button>
+    </form>
+    <a href="/bands">View All Bands</a> |
+    <a href="/bands/add">Add a Band to Track!</a> |
+    <a href="/venues">View All Venues</a> |
+    <a href="/venues/add">Add a Venue to Track!</a>
+  </body>
+</html>
