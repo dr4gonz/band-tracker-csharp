@@ -45,6 +45,7 @@ namespace BandTracker
       conn.Open();
       SqlCommand cmd = new SqlCommand("DELETE FROM bands;", conn);
       cmd.ExecuteNonQuery();
+      if(conn!=null) conn.Close();
     }
 
     public static List<Band> GetAll()

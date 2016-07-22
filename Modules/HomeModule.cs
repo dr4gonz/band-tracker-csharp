@@ -58,6 +58,11 @@ namespace BandTracker
         List<Venue> allVenues = Venue.GetAll();
         return View["add_venue.cshtml", allVenues];
       };
+      Delete["/venues/delete-all"] = _ => {
+        Venue.DeleteAll();
+        List<Venue> allVenues = Venue.GetAll();
+        return View["venues.cshtml", allVenues];
+      };
       Get["/venues/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Venue newVenue = Venue.Find(parameters.id);
