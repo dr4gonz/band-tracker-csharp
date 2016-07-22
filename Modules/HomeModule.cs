@@ -13,6 +13,11 @@ namespace BandTracker
         List<Band> allBands = Band.GetAll();
         return View["bands.cshtml", allBands];
       };
+      Delete["/bands/delete-all"] = _ => {
+        Band.DeleteAll();
+        List<Band> allBands = Band.GetAll();
+        return View["bands.cshtml", allBands];
+      };
       Get["/bands/add"] = _ => {
         List<Band> allBands = Band.GetAll();
         return View["add_band.cshtml", allBands];

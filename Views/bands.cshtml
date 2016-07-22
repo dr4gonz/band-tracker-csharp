@@ -23,6 +23,12 @@
           </div>
         </nav>
         <h1>Bands</h1>
+        @if (Model.Count == 0)
+        {
+          <h4>No Bands have been added yet! Click above to add a Band</h4>
+        }
+        else
+        {
         <ul class="list-group">
           @foreach (var band in Model)
           {
@@ -33,6 +39,12 @@
             </ul>
           }
         </ul>
+        <br>
+        <form class="form-group" action='/bands/delete-all' method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger" type="submit" name="delete">Delete All Bands?</button>
+        </form>
+      }
       </div>
     </div>
   </body>
