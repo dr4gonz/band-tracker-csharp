@@ -84,10 +84,10 @@ namespace BandTracker
       else
       {
         Venue newVenue = (Venue) otherVenue;
-        bool idEquality = (_id == newVenue.GetId());
-        bool nameEquality = (_name == newVenue.GetName());
-        bool phoneEquality = (_phone == newVenue.GetPhone());
-        bool emailEquality = (_email == newVenue.GetEmail());
+        bool idEquality = (this._id == newVenue.GetId());
+        bool nameEquality = (this._name == newVenue.GetName());
+        bool phoneEquality = (this._phone == newVenue.GetPhone());
+        bool emailEquality = (this._email == newVenue.GetEmail());
         return (idEquality && nameEquality && phoneEquality && emailEquality);
       }
     }

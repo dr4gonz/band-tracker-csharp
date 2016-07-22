@@ -117,8 +117,8 @@ namespace BandTracker
     }
 
     public void Dispose()
-      {
-        Venue.DeleteAll();
-      }
+    {
+      Venue.DeleteAll();
+    }
   }
 }
