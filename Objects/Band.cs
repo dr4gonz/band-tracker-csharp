@@ -203,28 +203,32 @@ namespace BandTracker
 
     public void AddVenue(int venueId)
     {
-      SqlConnection conn = DB.Connection();
-      conn.Open();
-
-      SqlCommand cmd = new SqlCommand("INSERT INTO venues_bands (venue_id, band_id) VALUES (@VenueId, @BandId);", conn);
-
-      SqlParameter bandIdParameter = new SqlParameter();
-      bandIdParameter.ParameterName = "@BandId";
-      bandIdParameter.Value = this._id;
-      cmd.Parameters.Add(bandIdParameter);
-
-      SqlParameter venueIdParameter = new SqlParameter();
-      venueIdParameter.ParameterName = "@VenueId";
-      venueIdParameter.Value = venueId;
-      cmd.Parameters.Add(venueIdParameter);
-
-      cmd.ExecuteNonQuery();
-
-      if (conn != null)
+      if (!(this.GetVenues().Contains(Venue.Find(venueId))))
       {
-        conn.Close();
+        SqlConnection conn = DB.Connection();
+        conn.Open();
+
+        SqlCommand cmd = new SqlCommand("INSERT INTO venues_bands (venue_id, band_id) VALUES (@VenueId, @BandId);", conn);
+
+        SqlParameter bandIdParameter = new SqlParameter();
+        bandIdParameter.ParameterName = "@BandId";
+        bandIdParameter.Value = this._id;
+        cmd.Parameters.Add(bandIdParameter);
+
+        SqlParameter venueIdParameter = new SqlParameter();
+        venueIdParameter.ParameterName = "@VenueId";
+        venueIdParameter.Value = venueId;
+        cmd.Parameters.Add(venueIdParameter);
+
+        cmd.ExecuteNonQuery();
+
+        if (conn != null)
+        {
+          conn.Close();
+        }
       }
     }
+
 
     public List<Venue> GetVenues()
     {
