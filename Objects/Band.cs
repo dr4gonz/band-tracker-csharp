@@ -201,6 +201,66 @@ namespace BandTracker
       if(conn != null) conn.Close();
     }
 
+    public void AddVenue(int venueId)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO venues_bands (venue_id, band_id) VALUES (@VenueId, @BandId);", conn);
+
+      SqlParameter bandIdParameter = new SqlParameter();
+      bandIdParameter.ParameterName = "@BandId";
+      bandIdParameter.Value = this._id;
+      cmd.Parameters.Add(bandIdParameter);
+
+      SqlParameter venueIdParameter = new SqlParameter();
+      venueIdParameter.ParameterName = "@VenueId";
+      venueIdParameter.Value = venueId;
+      cmd.Parameters.Add(venueIdParameter);
+
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+    public List<Venue> GetVenues()
+    {
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT venues.* FROM venues JOIN venues_bands ON (venues.id = venues_bands.venue_id) JOIN bands ON (venues_bands.band_id = bands.id) WHERE bands.id = @BandId;", conn);
+
+      SqlParameter bandIdParameter = new SqlParameter();
+      bandIdParameter.ParameterName = "@BandId";
+      bandIdParameter.Value = this.GetId().ToString();
+      cmd.Parameters.Add(bandIdParameter);
+
+      rdr = cmd.ExecuteReader();
+      List<Venue> allVenues = new List<Venue> {};
+      while(rdr.Read())
+      {
+        int venueId = rdr.GetInt32(0);
+        string venueName = rdr.GetString(1);
+        string venuePhone = rdr.GetString(2);
+        string venueEmail = rdr.GetString(3);
+        Venue newVenue = new Venue(venueName, venuePhone, venueEmail, venueId);
+        allVenues.Add(newVenue);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return allVenues;
+    }
+
     public void Delete()
     {
       SqlConnection conn = DB.Connection();

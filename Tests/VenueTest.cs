@@ -134,7 +134,7 @@ namespace BandTracker
     }
 
     [Fact]
-    public void Test_GetBands_GetsAllOfVenuesBands()
+    public void Venue_GetBands_GetsAllOfVenuesBands()
     {
       //Arrange
       Venue testVenue = new Venue("Mississippi Studios", "503.555.5555", "email@email.com");
