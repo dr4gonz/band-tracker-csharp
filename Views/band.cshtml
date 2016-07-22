@@ -24,6 +24,7 @@
         </nav>
         <h1>@Model["band"].GetName()</h1>
         <hr>
+        <h6><a href='/bands/@Model["band"].GetId()/update'>Edit</a></h6>
         <h3>Website: <a href='@Model["band"].GetWebsite()'>@Model["band"].GetWebsite()</a></h3>
         <h3>Email: @Model["band"].GetEmail()</h3>
         <br>

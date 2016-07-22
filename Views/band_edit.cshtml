@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Band Tracker</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-12">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Band Tracker</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/bands">View All Bands</a></li>
+              <li><a href="/bands/add">Add a Band to Track!</a></li>
+              <li><a href="/venues">View All Venues</a></li>
+              <li><a href="/venues/add">Add a Venue to Track</a></li>
+            </ul>
+          </div>
+        </nav>
+        <form class="form-group" action='/bands/@Model["band"].GetId()' method="post">
+          <h1>Edit - @Model["band"].GetName()</h1>
+          <hr>
+          <input type="hidden" name="_method" value="PATCH">
+          <label for="band-name">Band Name:</label>
+          <input type="text" name="band-name" value='@Model["band"].GetName()' class="form-control" required>
+          <label for="band-website">Band Website:</label>
+          <input type="text" name="band-website" value='@Model["band"].GetWebsite()' class="form-control" required>
+          <label for="band-email">Band Email:</label>
+          <input type="text" name="band-email" value='@Model["band"].GetEmail()' class="form-control" required>
+          <br>
+          <button class="btn btn-secondary" type="submit" name="edit-band">Submit</button>
+        </form>
+        <form class="form-group" action='/bands/@Model["band"].GetId()/delete' method="post">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="btn btn-danger" type="submit" name="delete">Delete this Band?</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

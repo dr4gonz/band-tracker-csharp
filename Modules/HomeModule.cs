@@ -33,6 +33,33 @@ namespace BandTracker
         model.Add("venues", allVenues);
         return View["band.cshtml", model];
       };
+      Get["/bands/{id}/update"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>{};
+        Band newBand = Band.Find(parameters.id);
+        List<Venue> bandsVenues = newBand.GetVenues();
+        List<Venue> allVenues = Venue.GetAll();
+        model.Add("band", newBand);
+        model.Add("bands-venues", bandsVenues);
+        model.Add("venues", allVenues);
+        return View["band_edit.cshtml", model];
+      };
+      Patch["/bands/{id}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>{};
+        Band newBand = Band.Find(parameters.id);
+        newBand.Update(Request.Form["band-name"], Request.Form["band-website"], Request.Form["band-email"]);
+        List<Venue> bandsVenues = newBand.GetVenues();
+        List<Venue> allVenues = Venue.GetAll();
+        model.Add("band", newBand);
+        model.Add("bands-venues", bandsVenues);
+        model.Add("venues", allVenues);
+        return View["band.cshtml", model];
+      };
+      Delete["/bands/{id}/delete"] = parameters => {
+        Band selectedBand = Band.Find(parameters.id);
+        selectedBand.Delete();
+        List<Band> allBands = Band.GetAll();
+        return View["bands.cshtml", allBands];
+      };
       Post["/bands/{id}/add-venue"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Band newBand = Band.Find(parameters.id);
